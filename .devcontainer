@@ -1,0 +1,7 @@
+{
+    "name": "make it dense",
+    "image": "make_it_dense:1.5",
+    "workspaceFolder": "/vdbfusion",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/vdbfusion,type=bind,consistency=cached",
+    "remoteUser": "root"
+}
