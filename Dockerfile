@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04  # Use a CUDA-enabled base image
 
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /workspace
@@ -13,6 +13,13 @@ RUN apt update && \
                    libtbb-dev \
                    python3-pip \
                    pybind11-dev
+
+# Install CUDA Toolkit dependencies
+RUN apt-get install -y --no-install-recommends \
+    cuda-command-line-tools-11-8 \
+    cuda-libraries-dev-11-8 \
+    libcublas-dev-11-8 \
+    libcudnn8-dev
 
 RUN pip install numpy && \
     git clone https://github.com/nachovizzo/openvdb.git -b nacho/fix_background_inactive && \
